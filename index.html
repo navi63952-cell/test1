@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090b0e">
+  <title>AFTERHOURS — Vehicle Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="atelier">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Afterhours home"><span class="brand-mark">A<span>/</span></span><span class="brand-name">AFTER<span>HOURS</span><small>VEHICLE ATELIER</small></span></a>
+      <div class="top-center"><span class="live-dot"></span> CONFIGURATOR <i>/</i> <span id="topModel">NIGHTRUN GT</span></div>
+      <div class="top-right"><span class="build-id">BUILD <b>№ 00841</b></span><button class="icon-button sound-button" id="soundBtn" aria-label="Toggle ambient sound" title="Toggle ambient sound"><svg viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4H4Z"/><path d="M17 9a5 5 0 0 1 0 6M19 6a9 9 0 0 1 0 12"/></svg></button><button class="save-button" id="saveBtn">SAVE BUILD <span>↗</span></button></div>
+    </header>
+
+    <section class="stage" id="stage" aria-label="Vehicle preview">
+      <div class="stage-grid"></div>
+      <div class="stage-glow"></div>
+      <div class="stage-label stage-label-left"><span>01 — EXTERIOR</span><b>DESIGNED AFTER DARK.</b></div>
+      <div class="stage-label stage-label-right"><span>STUDIO LIGHTING <i class="live-dot"></i></span><b id="finishReadout">OBSIDIAN / GLOSS</b></div>
+      <div class="view-toolbar"><button id="viewSide" class="view-pill active" data-view="side">SIDE</button><button id="viewFront" class="view-pill" data-view="front">FRONT</button><button id="viewRear" class="view-pill" data-view="rear">REAR</button><span class="view-divider"></span><button class="icon-button expand-button" id="expandBtn" title="Toggle clean preview" aria-label="Toggle clean preview"><svg viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></svg></button></div>
+      <div class="car-wrap" id="carWrap">
+        <div class="car-shadow"></div>
+        <canvas id="carCanvas" class="car-art" aria-label="Interactive 3D sports car preview"></canvas>
+        <svg hidden class="car-art" id="carArt" viewBox="0 0 1000 490" role="img" aria-label="Customized low-slung sports car">
+          <defs>
+            <linearGradient id="bodyPaint" x1="0.08" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#ff6262"/><stop offset=".16" stop-color="#e93035"/><stop offset=".42" stop-color="#a30e19"/><stop offset=".68" stop-color="#580912"/><stop offset=".88" stop-color="#da3038"/><stop offset="1" stop-color="#3b080d"/></linearGradient>
+            <linearGradient id="bodyUpper" x1="0" y1="0" x2="0.5" y2="1"><stop stop-color="#ff9290"/><stop offset=".18" stop-color="#e44244"/><stop offset=".52" stop-color="#a71320"/><stop offset="1" stop-color="#610b16"/></linearGradient>
+            <linearGradient id="glass" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#a6d9e8" stop-opacity=".82"/><stop offset=".24" stop-color="#417181" stop-opacity=".78"/><stop offset=".7" stop-color="#111c24"/><stop offset="1" stop-color="#090c11"/></linearGradient>
+            <linearGradient id="tire" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#30353b"/><stop offset=".35" stop-color="#090a0c"/><stop offset=".78" stop-color="#171a1f"/><stop offset="1" stop-color="#3b4147"/></linearGradient>
+            <radialGradient id="rim" cx=".36" cy=".3"><stop stop-color="#f3f3e9"/><stop offset=".3" stop-color="#878a8b"/><stop offset=".68" stop-color="#34383d"/><stop offset="1" stop-color="#111317"/></radialGradient>
+            <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e54d4c" stop-opacity=".24"/><stop offset="1" stop-color="#e54d4c" stop-opacity="0"/></linearGradient>
+            <filter id="blur"><feGaussianBlur stdDeviation="15"/></filter>
+            <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <ellipse cx="499" cy="412" rx="370" ry="26" fill="url(#floor)" filter="url(#blur)"/>
+          <g class="car-body">
+            <path d="M103 321 117 285Q128 264 162 251L277 222 347 154Q365 137 405 130L573 125Q612 128 642 151L720 214 836 241Q874 252 892 278L913 320 887 341 821 352 789 342Q780 275 720 271 660 268 643 335L373 350Q364 286 305 286 244 287 229 352L161 348Z" fill="url(#bodyPaint)" stroke="#f87b73" stroke-opacity=".5" stroke-width="2"/>
+            <path d="m320 216 48-52q15-16 42-19l157-1q28 2 50 21l67 56-165 6-269 7Z" fill="url(#glass)" stroke="#fbb8aa" stroke-opacity=".46" stroke-width="2"/>
+            <path d="m424 148-11 82m159-84 12 84" stroke="#0b1116" stroke-width="8"/><path d="m421 148-8 79m160-80 12 80" stroke="#c0eff7" stroke-opacity=".44" stroke-width="2"/>
+            <path d="m352 158 51-6-11 77-95 3Zm223-6 38 5 65 58-91 2Z" fill="#bdebf3" opacity=".13"/>
+            <path d="m117 285 99-20 82-34 130-3 237-4 93 30 114 27" fill="none" stroke="#ffb0a4" stroke-opacity=".65" stroke-width="2"/>
+            <path d="m162 254 68 16 44-11m-85 44 71 3m296-76 43 8m192 10 71 27" fill="none" stroke="#21090e" stroke-opacity=".75" stroke-width="4"/>
+            <path d="m136 280 70-16 4 8-69 22Z" fill="#e7f2ee" filter="url(#glow)"/><path d="m866 270 27 13 12 16-42-8Z" fill="#ff2929" filter="url(#glow)"/>
+            <path d="m133 319 21-5 2 7-18 10m713-14 29 7-5 9-22-4" fill="#15181c"/><path d="M166 343 231 349m556-8 53 5" stroke="#ff7771" stroke-width="3" opacity=".8"/>
+            <path d="m253 256 107-5m-71 95 347-8m-213-84 2 90m193-91 1 83" fill="none" stroke="#33090e" stroke-opacity=".72" stroke-width="2"/>
+            <path d="m352 341 291-6-13 17-268 13-12-9Z" fill="#15171a"/><path d="m384 350 230-7" stroke="#a3aab0" stroke-opacity=".35" stroke-width="2"/>
+            <path d="m460 314 29-1 2 7-29 1Zm165-2 29 1 2 7-29-1Z" fill="#e9d17b" opacity=".9"/>
+          </g>
+          <g id="wheelRear" class="wheel" transform="translate(306 343)"><circle r="58" fill="url(#tire)" stroke="#252a30" stroke-width="3"/><circle r="43" fill="url(#rim)" stroke="#070809" stroke-width="3"/><circle r="34" fill="#15191e" stroke="#a7adaf" stroke-opacity=".6" stroke-width="2"/><g class="spokes" fill="#bbc0c0" stroke="#454a4d" stroke-width="1"><path d="m-5-31 10 0 4 28-9 7-9-7z"/><path d="m-5-31 10 0 4 28-9 7-9-7z" transform="rotate(72)"/><path d="m-5-31 10 0 4 28-9 7-9-7z" transform="rotate(144)"/><path d="m-5-31 10 0 4 28-9 7-9-7z" transform="rotate(216)"/><path d="m-5-31 10 0 4 28-9 7-9-7z" transform="rotate(288)"/></g><circle r="11" fill="#777e83" stroke="#0a0c0f" stroke-width="3"/><circle r="4" fill="#e5e7e4"/></g>
+          <g id="wheelFront" class="wheel" transform="translate(718 335)"><circle r="58" fill="url(#tire)" stroke="#252a30" stroke-width="3"/><circle r="43" fill="url(#rim)" stroke="#070809" stroke-width="3"/><circle r="34" fill="#15191e" stroke="#a7adaf" stroke-opacity=".6" stroke-width="2"/><g class="spokes" fill="#bbc0c0" stroke="#454a4d" stroke-width="1"><path d="m-5-31 10 0 4 28-9 7-9-7z"/><path d="m-5-31 10 0 4 28-9 7-9-7z" transform="rotate(72)"/><path d="m-5-31 10 0 4 28-9 7-9-7z" transform="rotate(144)"/><path d="m-5-31 10 0 4 28-9 7-9-7z" transform="rotate(216)"/><path d="m-5-31 10 0 4 28-9 7-9-7z" transform="rotate(288)"/></g><circle r="11" fill="#777e83" stroke="#0a0c0f" stroke-width="3"/><circle r="4" fill="#e5e7e4"/></g>
+          <path d="M284 388H757" stroke="#e74b47" stroke-opacity=".26" stroke-width="3" filter="url(#glow)"/>
+        </svg>
+      </div>
+      <div class="stage-bottom"><div class="model-id"><span>AH — 08</span><strong>NIGHTRUN <em>GT</em></strong><small>3.8L TWIN-TURBO V6 <i>·</i> REAR-WHEEL DRIVE</small></div><div class="stage-hint"><span class="drag-icon">↔</span> DRAG TO ROTATE <span class="hint-divider">/</span> SCROLL TO ZOOM</div><div class="stage-arrows"><button id="prevView" aria-label="Previous view">←</button><span><b id="viewCount">01</b> / 03</span><button id="nextView" aria-label="Next view">→</button></div></div>
+    </section>
+
+    <aside class="control-panel">
+      <div class="panel-head"><div><span class="eyebrow">MAKE IT YOURS <i>—</i> 01 / 03</span><h1>THE <span>BUILD.</span></h1></div><button class="reset-button" id="resetBtn" title="Reset customization"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.64-6.36L3 8"/><path d="M3 3v5h5"/></svg> RESET</button></div>
+      <div class="panel-scroll">
+        <section class="control-section paint-section"><div class="section-heading"><div><span class="section-number">01</span><h2>PAINT</h2></div><span class="section-note" id="paintName">TORCH RED</span></div><div class="swatches" id="swatches" aria-label="Paint colour"></div><div class="finish-row"><span>FINISH</span><div class="segmented" id="finishChoices"><button class="selected" data-finish="gloss">GLOSS</button><button data-finish="satin">SATIN</button><button data-finish="metallic">METALLIC</button></div></div></section>
+        <section class="control-section"><div class="section-heading"><div><span class="section-number">02</span><h2>WHEELS</h2></div><span class="section-note" id="wheelLabel">FORGED / 5-SPOKE</span></div><div class="wheel-options" id="wheelOptions"><button class="wheel-option selected" data-wheel="five" aria-label="Five spoke wheels"><svg viewBox="0 0 42 42"><circle cx="21" cy="21" r="16"/><circle cx="21" cy="21" r="9"/><path d="m20 12 2 0 2 8-3 3-3-3zM20 12l2 0 2 8-3 3-3-3z" transform="rotate(72 21 21)"/><path d="m20 12 2 0 2 8-3 3-3-3z" transform="rotate(144 21 21)"/><path d="m20 12 2 0 2 8-3 3-3-3z" transform="rotate(216 21 21)"/><path d="m20 12 2 0 2 8-3 3-3-3z" transform="rotate(288 21 21)"/></svg><span>FIVE</span></button><button class="wheel-option" data-wheel="mesh" aria-label="Mesh wheels"><svg viewBox="0 0 42 42"><circle cx="21" cy="21" r="16"/><circle cx="21" cy="21" r="9"/><path d="M21 12v18m-9-9h18m-15.4-6.4 12.8 12.8m0-12.8L14.6 27.4"/></svg><span>MESH</span></button><button class="wheel-option" data-wheel="disc" aria-label="Disc wheels"><svg viewBox="0 0 42 42"><circle cx="21" cy="21" r="16"/><circle cx="21" cy="21" r="12"/><circle cx="21" cy="21" r="5"/><path d="M21 9v4m0 16v4M9 21h4m16 0h4"/></svg><span>DISC</span></button></div></section>
+        <section class="control-section lighting-section"><div class="section-heading"><div><span class="section-number">03</span><h2>LIGHTING</h2></div><span class="section-note" id="lightLabel">EMBER RED</span></div><div class="light-row"><div class="light-info"><span class="light-icon">✳</span><span><b>UNDERGLOW</b><small>GROUND EFFECT LIGHTING</small></span></div><button class="toggle" id="glowToggle" role="switch" aria-checked="true" aria-label="Toggle underglow"><span></span></button></div><div class="light-swatches" id="lightSwatches"><button class="light-swatch active" data-light="#ee4843" aria-label="Red underglow"></button><button class="light-swatch" data-light="#4389ff" aria-label="Blue underglow"></button><button class="light-swatch" data-light="#b047ff" aria-label="Violet underglow"></button><button class="light-swatch" data-light="#54e3bd" aria-label="Mint underglow"></button></div></section>
+        <section class="control-section performance-section"><div class="section-heading"><div><span class="section-number">04</span><h2>STANCE</h2></div><span class="section-note" id="stanceValue">−20 MM</span></div><div class="slider-row"><span>STREET</span><input id="stanceSlider" type="range" min="0" max="100" value="72" aria-label="Ride height"><span>TRACK</span></div></section>
+      </div>
+      <div class="panel-footer"><div class="total-row"><span>BUILD ESTIMATE</span><strong id="buildPrice">$ 84,900</strong></div><button class="cta-button" id="completeBtn"><span>COMPLETE BUILD</span><b>↗</b></button><p>FOR THE ROAD LESS TRAVELLED. <span>© AFTERHOURS 2026</span></p></div>
+    </aside>
+    <div class="toast" id="toast" role="status"></div>
+  </main>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"}}</script>
+  <script type="module" src="three-scene.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
